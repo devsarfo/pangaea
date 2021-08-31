@@ -17,6 +17,17 @@ should be forwarded to all subscriber endpoints.
 - You can now access the application at 127.0.0.1:8000
 
 
+## Publishing Server Requirements
+This project using no 3rd party to send message, instead it uses laravel's scheduler to queue and send messages to endpoints.
+ 
+You can add the scheduler cron entry to your local development machine using: 
+
+    * * * * * cd /path-to-your-project && php artisan schedule:run >> /dev null 2>&1
+
+Also you you may use the schedule:work Artisan command. This command will run in the foreground and invoke the scheduler every minute until you terminate the command:
+
+    php artisan schedule:work
+
 ## Publisher Server Endpoints
 api/ is added because the api route is used to ignore CSFR token errors in web.php
 
